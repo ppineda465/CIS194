@@ -1,12 +1,12 @@
 ------------exercise 1
 --1.1
 fun1 :: [Integer] -> Integer
-fun1 = product. (map (substact 2)).filter even
+fun1 = product . (map $ subtract 2) . filter even
 
 --1.2
 fun2 :: Integer -> Integer
-fun2 = sum.filter even.takeWhile(/=1).iterate l
-where l n=if even n then n`div` 2 else  (3*n=1)
+fun2 = sum . filter even . takeWhile(/=1) . iterate l
+  where l n=if even n then n`div` 2 else  (3*n-1)
 
 ------------exercise 2
 data Tree a = Leaf
@@ -14,18 +14,18 @@ data Tree a = Leaf
     deriving (Show, Eq)
 
 foldTree :: [a] -> Tree a
-foldTree = foldr insertT Leaf
+foldTree = foldr insertTree Leaf
 
-insertT :: [arr] -> Tree a
-insertT val Leaf = Node 0 Leaf val Leaf
-insertT n (Node h l x r)
-    | height l<height r = Node h (insertT n l) x r
-    | height l > height r = Node h l x (insert n r)
-    | otherwise = Node (1+height  iRight) l x iRight
+insertTree :: a -> Tree a -> Tree a
+insertTree val Leaf        = Node 0 Leaf val Leaf
+insertTree v (Node h l x r)
+    | height l < height r = Node h (insertTree v l) x r
+    | height l > height r = Node h l x (insertTree v r)
+    | otherwise           = Node (1 + height iRight) l x iRight
         where
-          height Leaf = -1
-          heigtht (Node xs _ _ _)=xs
-          iRight = inserT v r
+            height Leaf = -1
+            height (Node ht _ _ _) = ht
+            iRight = insertTree v r
 
 
 
@@ -35,5 +35,5 @@ xor :: [Bool] -> Bool
 xor = odd.foldr (\x n -> if x == True then n+1 else n)0
 
 --3.2
-map :: (a -> b) -> [a] -> [b]
-map f = foldr (\x xs -> f x : xs) []
+--map :: (a -> b) -> [a] -> [b]
+--map f = foldr (\x xs -> f x : xs) []
