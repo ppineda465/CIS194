@@ -1,0 +1,10 @@
+--> class Monoid m where
+    mempty  :: m
+    mappend :: m -> m -> m
+
+    mconcat :: [m] -> m
+    mconcat = foldr mappend mempty
+
+(<>) :: Monoid m => m -> m -> m
+(<>) = mappend
+(<>) is defined as a synonym for mappend
