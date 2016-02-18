@@ -1,0 +1,33 @@
+------Applicative
+class Functor f => Applicative f where
+  pure  :: a -> f a
+  (<*>) :: f (a -> b) -> f a -> f b
+
+
+
+
+-->There is only one really “interesting” law for Applicative:
+f `fmap` x === pure f <*> x
+
+
+
+-->Difference between Monad and Applicative
+The structure of an Applicative computation is fixed, whereas the structure of a Monad computation can change based on intermediate results.
+
+----instance Monad (Either e) where
+  return = Right
+  Left e  >>= _ = Left e
+  Right a >>= f = f a
+
+  
+
+-----instance Applicative (Either e) where
+    pure  = return
+    (<*>) = ap
+
+
+  ap :: Monad m => m (a -> b) -> m a -> m b
+  ap mf ma = do
+    f <- mf
+    a <- ma
+    return (f a)
