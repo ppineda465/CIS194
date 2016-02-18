@@ -1,0 +1,16 @@
+The <*> It's a sort of a beefed up fmap.
+instance Applicative Maybe where
+    pure = Just
+    Nothing <*> _ = Nothing
+    (Just f) <*> something = fmap f something
+
+
+    ghci> Just (+3) <*> Just 9
+    Just 12
+
+By using <$>, the applicative style really shines,
+because now if we want to apply a function f between three applicative functors,
+we can write f <$> x <*> y <*> z. If the parameters weren't applicative functors but normal values, we'd write f x y z.
+
+<*> Applicative
+<$> Functor
