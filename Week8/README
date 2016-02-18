@@ -1,0 +1,18 @@
+-->There is no String “inside” an IO String
+-->   the (>>) operator (pronounced “and then”), which has the type
+(>>) :: IO a -> IO b -> IO b
+--> operator (>>=) (pronounced “bind”) with the type
+(>>=) :: IO a -> (a -> IO b) -> IO b
+--->getLine
+main = do
+    a <- getLine
+    b <- getLine
+    c <- getLine
+    print [a,b,c]
+
+
+--> curry and un curry
+uncurry converts a curried function to a function on pairs  (a -> b -> c) -> (a,b) -> c
+curry 	((a,b) -> c) -> a -> b -> c
+Input: curry fst 2 3
+Output: 2
