@@ -1,0 +1,4 @@
+--Under a lazy evaluation strategy, evaluation of function arguments
+--is delayed as long as possible: they are not evaluated until it actually becomes necessary to do so.
+
+https://wiki.haskell.org/Foldr_Foldl_Foldl'

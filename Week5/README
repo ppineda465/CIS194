@@ -1,0 +1,10 @@
+--More polymorphism and type classes
+
+class Eq a where
+  (==) :: a -> a -> Bool
+  (/=) :: a -> a -> Bool
+
+
+  *** reverseWords = unwords . map reverse . words
+  *** map
+  map (++"!") ["hey","ho","woo”]  = ["hey!","ho!","woo!"]
