@@ -1,6 +1,6 @@
 {-# OPTIONS_GHC -Wall #-}
 
-module homework1 where
+module CIS194.Week1.Homework1 where
 
 -- Exercise 1 -----------------------------------------
 
