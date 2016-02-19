@@ -1,0 +1,24 @@
+Applicative functors, Part II
+
+--> pure
+Its type declaration is pure :: a -> f a. f plays the role of our applicative functor instance here.
+it takes a value and puts it in some sort of default (or pure) context—a minimal context that still yields that value.
+
+
+--> Nothing
+
+instance Applicative Maybe where
+    pure = Just
+    Nothing <*> _ = Nothing
+    (Just f) <*> something = fmap f something
+
+
+
+(:) is a function that takes an element and a list and returns a new list with that element at the beginning.
+ghci> (:) <$> Just 3 <*> Just [4]
+Just [3,4]
+
+
+
+
+https://hackage.haskell.org/package/base-4.8.2.0/docs/Data-Char.html
