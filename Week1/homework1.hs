@@ -1,3 +1,6 @@
+{-# OPTIONS_GHC -Wall #-}
+
+module homework1 where
 
 -- Exercise 1 -----------------------------------------
 
